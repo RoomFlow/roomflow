@@ -7,6 +7,9 @@ cache:
   directories:
     - node_modules
 
+before_install:
+   - openssl aes-256-cbc -K $encrypted_5da8fec62ad9_key -iv $encrypted_5da8fec62ad9_iv -in ./src/keys/firebase-config.json.enc -out ./src/keys/firebase-config.json -d
+
 install:
   - npm install
 
