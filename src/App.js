@@ -5,7 +5,8 @@ import moment from 'moment';
 import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalRectSeries } from 'react-vis';
 
 import './App.css';
-import config from './config.js'
+import config from './keys/firebase-config.json'
+import undefined from 'firebase/firestore';
 
 class App extends Component {
   state = {
@@ -20,7 +21,7 @@ class App extends Component {
 
     query.get().then(querySnapshot => {
       this.setState({
-        data: querySnapshot.docs.map(doc => doc.data().timestamp.seconds)
+        data: querySnapshot.docs.map(doc => doc.data().timestamp.toDate())
       }, () => console.log(this.state))
     }).catch(error => console.log(error));
   }
@@ -30,17 +31,18 @@ class App extends Component {
     let groupedData = [];
 
     if (data) {
-      let rangeStart = moment.unix(data[0]).startOf('hour');
-      let rangeEnd = moment.unix(data[0]).endOf('hour');
+      let rangeStart = moment(data[0]).startOf('hour');
+      let rangeEnd = moment(data[0]).endOf('hour');
       let count = 0;
 
       data.forEach((timestamp, index) => {
-        let currentMoment = moment.unix(timestamp);
-  
-        if (currentMoment.isAfter(rangeEnd)) {
+        let currentMoment = moment(timestamp);
+
+        if (moment(currentMoment).isAfter(moment(rangeEnd))) {
+          
           groupedData.push({
-            x0: rangeStart.unix(),
-            x: rangeEnd.unix(),
+            x0: moment(rangeStart),
+            x: moment(rangeEnd),
             y: count
           });
 
@@ -52,8 +54,8 @@ class App extends Component {
       });
 
       groupedData.push({
-        x0: rangeStart.unix(),
-        x: rangeEnd.unix(),
+        x0: moment(rangeStart),
+        x: moment(rangeEnd),
         y: count
       });
     }
@@ -65,14 +67,18 @@ class App extends Component {
     let graphData = this.graphData();
     console.log(graphData);
 
-    let xMin = moment(graphData.x).startOf('day').unix();
-    let xMax = moment(graphData.x).endOf('day').unix();
+    let xMin = 0;
+    let xMax = 0;
+    if (graphData[0]) {
+      xMin = moment(graphData[0].x).startOf('day');
+      xMax = moment(graphData[0].x).endOf('day');
+    }
 
     return (
       <XYPlot
         xDomain={[xMin, xMax]}
         xType="time"
-        width={1000}
+        width={1300}
         height={600}
       >
         <VerticalGridLines />
