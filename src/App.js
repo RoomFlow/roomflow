@@ -5,8 +5,7 @@ import moment from 'moment';
 import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalRectSeries } from 'react-vis';
 
 import './App.css';
-import config from './keys/firebase-config.json'
-import undefined from 'firebase/firestore';
+import config from './keys/firebase-config.json';
 
 class App extends Component {
   state = {
