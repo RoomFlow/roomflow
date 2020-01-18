@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
+import MultipleSelect from './MultiDropdown'
 
 
 const useStyles = makeStyles(theme => ({
@@ -56,7 +57,7 @@ export default function SignInSide() {
             Search Now
           </Typography>
           <form className={classes.form} noValidate>
-            <TextField
+            {/* <TextField
               variant="outlined"
               margin="normal"
               required
@@ -66,7 +67,8 @@ export default function SignInSide() {
               name="building"
               autoComplete="building"
               autoFocus
-            />
+            /> */}
+            <MultipleSelect></MultipleSelect>
             <FormControlLabel
             value="end"
             control={<Switch color="primary" />}
