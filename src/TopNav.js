@@ -5,6 +5,10 @@ import MultipleSelect from './MultiDropdown'
 import SvgIcon from '@material-ui/core/SvgIcon';
 import SimplePopover from './SimplePopover'
 import DiscreteSlider from './Occupants'
+import CheckboxLabels from './RoomType'
+import { Link, Button } from '@material-ui/core';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
   
   function HomeIcon(props) {
     return (
@@ -18,7 +22,9 @@ export default function TopNav() {
         <div className="padding10">
             <Grid container direction="row" justify="left" alignItems="center" spacing={3}> 
                 <Grid item>
-                    <HomeIcon fontSize="large" />
+                    <Link href="/">
+                        <HomeIcon fontSize="large" />
+                    </Link>
                 </Grid>
                 <Grid item>
                     <MultipleSelect></MultipleSelect>
@@ -26,13 +32,39 @@ export default function TopNav() {
             </Grid>
             <Grid container direction="row" justify="left" alignItems="center" spacing={2}> 
                 <Grid item>
-                    <SimplePopover title="Occupants"></SimplePopover>
+                    <SimplePopover title="Occupants">
+                        <DiscreteSlider></DiscreteSlider>
+                    </SimplePopover>
                 </Grid>
                 <Grid item>
-                    <SimplePopover title="Type"></SimplePopover>
+                    <SimplePopover title="Type">
+                        <CheckboxLabels></CheckboxLabels>
+                    </SimplePopover>
                 </Grid>
                 <Grid item>
-                    <DiscreteSlider></DiscreteSlider>
+                    <FormControlLabel
+                    value="end"
+                    control={<Switch color="primary" />}
+                    label="Currently Available"
+                    labelPlacement="end"
+                    />
+                </Grid>
+                    <FormControlLabel
+                    value="end"
+                    control={<Switch color="primary" />}
+                    label="Windows"
+                    labelPlacement="end"
+                    />
+                    <FormControlLabel
+                    value="end"
+                    control={<Switch color="primary" />}
+                    label="Wheelchair Accessible"
+                    labelPlacement="end"
+                    />
+                <Grid item>
+                    <Button variant="contained" color="secondary">
+                    Search Now!
+                    </Button>
                 </Grid>
             </Grid>
         </div>

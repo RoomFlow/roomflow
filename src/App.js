@@ -3,6 +3,7 @@ import './App.css';
 // import S from '@material-ui/core/Button';
 import SignInSide from './SignInSide';
 import TopNav from './TopNav'
+import SpacingGrid from './SearchResults'
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,6 +19,7 @@ function App() {
         <Switch>
           <Route path="/loggedIn">
             <TopNav></TopNav>
+            <SpacingGrid></SpacingGrid>
           </Route>
           <Route path="/">
             <SignInSide></SignInSide>

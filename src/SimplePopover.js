@@ -45,7 +45,7 @@ export default function SimplePopover(props) {
           horizontal: 'center',
         }}
       >
-        <Typography className={classes.typography}>{props.content}</Typography>
+        <Typography className={classes.typography}>{props.children}</Typography>
       </Popover>
     </div>
   );
