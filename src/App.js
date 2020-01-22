@@ -48,8 +48,6 @@ class App extends React.Component {
       }
     }
 
-    console.log(data);
-
     fetch('http://roomflow-env-2.fp7qjqi6g4.us-east-2.elasticbeanstalk.com:8080/v1/search/filter', {
       method: 'POST', // or 'PUT'
       headers: {
@@ -59,7 +57,22 @@ class App extends React.Component {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log('Success:', data);
+      let buildingObject = data.rooms.reduce((groupedRooms, room) => {
+        groupedRooms[room['Building']] = groupedRooms[room['Building']] || [];
+        groupedRooms[room['Building']].push(room);
+        return groupedRooms;
+      }, {});
+      
+      let buildingList = Object.keys(buildingObject).map(name => ({
+        buildingName: name,
+        rooms: buildingObject[name]
+      }))
+
+      this.setState({
+        searchResults: buildingList
+      })
+
+      console.log('Results:', buildingList);
     })
     .catch((error) => {
       console.error('Error:', error);
