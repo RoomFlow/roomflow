@@ -1,0 +1,9 @@
+.moiz {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.padding10 {
+    padding: 10px;
+}
