@@ -15,29 +15,42 @@ class App extends React.Component {
     super(props);
     this.state = {
       searchResults: null,
-    }
-  }
-
-  componentDidMount() {
-    console.log('hello world');
-    console.log(this.search('hello'));
-  }
-
-  search() {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
-    const data = {
-      "filter": {
+      filter: {
         "capacity": {
           "size": 0,
           "comparison": "GREATER_THAN"
         },
-        "roomType": "ANY_ROOM",
-        "building": "ANY_BUILDING"
+        "building": ""
       }
-    };  
+    }
+  }
 
-    fetch('http://roomflow-env-2.fp7qjqi6g4.us-east-2.elasticbeanstalk.com:443/v1/search/filter', {
+  // componentDidMount() {
+  // }
+
+  updateFilter(field) {
+    return event => {
+      this.setState({
+        filter: {...this.state.filter, [field]: event.target.value}
+      })
+    }
+  }
+
+  search(event) {
+    event.preventDefault();
+
+    let data = { filter: {}};
+    Object.assign(data.filter, this.state.filter);
+
+    for (let [key, value] of Object.entries(data.filter)) {
+      if (!value) {
+        delete data.filter[key];
+      }
+    }
+
+    console.log(data);
+
+    fetch('http://roomflow-env-2.fp7qjqi6g4.us-east-2.elasticbeanstalk.com:8080/v1/search/filter', {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +66,6 @@ class App extends React.Component {
     });
   }
 
-
   render() {
     return (
       <Router> 
@@ -64,12 +76,15 @@ class App extends React.Component {
               <SpacingGrid></SpacingGrid>
             </Route>
             <Route path="/">
-              <SignInSide></SignInSide>
+              <SignInSide 
+                updateFilter={this.updateFilter.bind(this)} 
+                filterData={this.state.filter}
+                search={this.search.bind(this)}
+              />
             </Route>
           </Switch>
         </div>
       </Router>
-  
     );
   }
 }

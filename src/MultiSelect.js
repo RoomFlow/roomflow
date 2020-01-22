@@ -59,12 +59,12 @@ const buildings = [
   JHE
 ];
 
-export default function MultipleSelect() {
+export default function MultipleSelect(prop) {
   const classes = useStyles();
-  const [personName, setPersonName] = React.useState([]);
+  const [buildingName, setBuildingName] = React.useState([]);
 
   const handleChange = event => {
-    setPersonName(event.target.value);
+    setBuildingName(event.target.value);
   };
 
   return (
@@ -75,7 +75,7 @@ export default function MultipleSelect() {
           labelId="demo-mutiple-chip-label"
           id="demo-mutiple-chip"
           multiple
-          value={personName}
+          value={buildingName}
           onChange={handleChange}
           input={<Input id="select-multiple-chip" />}
           renderValue={selected => (
