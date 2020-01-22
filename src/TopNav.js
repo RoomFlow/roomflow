@@ -1,7 +1,7 @@
 import React from 'react';
 import './TopNav.css';
 import Grid from '@material-ui/core/Grid';
-import MultipleSelect from './MultiDropdown'
+import MultipleSelect from './MultiSelect'
 import SvgIcon from '@material-ui/core/SvgIcon';
 import SimplePopover from './SimplePopover'
 import DiscreteSlider from './Occupants'
