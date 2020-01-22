@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-// import S from '@material-ui/core/Button';
 import SignInSide from './SignInSide';
 import TopNav from './TopNav'
 import SpacingGrid from './SearchResults'
@@ -9,9 +8,6 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import axios from 'axios';
-import https from 'https';
-
 
 class App extends React.Component {
   
@@ -41,34 +37,20 @@ class App extends React.Component {
       }
     };  
 
-    const instance = axios.create({
-      httpsAgent: new https.Agent({rejectUnauthorized: false})
-    });
-    
-    instance.post('https://roomflow-env-2.fp7qjqi6g4.us-east-2.elasticbeanstalk.com:443/v1/search/filter', data)
-    .then(function (response) {
-      console.log(response);
+    fetch('http://roomflow-env-2.fp7qjqi6g4.us-east-2.elasticbeanstalk.com:443/v1/search/filter', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
     })
-    .catch(function (error) {
-      console.log(error);
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
-    
-
-    // fetch('https://roomflow-env-2.fp7qjqi6g4.us-east-2.elasticbeanstalk.com:443/v1/search/filter', {
-    //   method: 'POST', // or 'PUT'
-    //   mode: 'no-cors',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    // .then((response) => response.json())
-    // .then((data) => {
-    //   console.log('Success:', data);
-    // })
-    // .catch((error) => {
-    //   console.error('Error:', error);
-    // });
   }
 
 
