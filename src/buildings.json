@@ -1,0 +1,117 @@
+{
+    "ABB": {
+        "name": "Arthur N. Bournes Building",
+        "x": "24.1%",
+        "y": "69.0%"
+    },
+    "BSB": {
+        "name": "Burke Science Building",
+        "x": "38.3%",
+        "y": "56.0%"
+    },
+    "CNH": {
+        "name": "Chester New Hall",
+        "x": "53.5%",
+        "y": "39.0%"
+    },
+    "DSB": {
+        "name": "DeGroote School of Business",
+        "x": "70.7%",
+        "y": "39.2%"
+    },
+    "ETB": {
+        "name": "Engineering Technology Building",
+        "x": "37.5%",
+        "y": "88.0%"
+    },
+    "GH": {
+        "name": "Gilmour Hall",
+        "x": "55.0%",
+        "y": "44.2%"
+    },
+    "GS": {
+        "name": "General Science Building",
+        "x": "30.0%",
+        "y": "53.2%"
+    },
+    "HH": {
+        "name": "Hamilton Hall",
+        "x": "39.0%",
+        "y": "46.0%"
+    },
+    "HSC": {
+        "name": "Health Sciences Centre",
+        "x": "60.0%",
+        "y": "77.0%"
+    },
+    "ITB": {
+        "name": "Information Technology Building",
+        "x": "31.2%",
+        "y": "84.5%"
+    },
+    "IWC": {
+        "name": "Ivor Wynne Centre",
+        "x": "77.5%",
+        "y": "26.0%"
+    },
+    "JHE": {
+        "name": "John Hodgins Engineering Building",
+        "x": "36.3%",
+        "y": "67.0%"
+    },
+    "KTH": {
+        "name": "Kenneth Taylor Hall",
+        "x": "66.1%",
+        "y": "39.7%"
+    },
+    "LRW": {
+        "name": "L.R. Wilson Hall",
+        "x": "67.7%",
+        "y": "50.7%"
+    },
+    "LS": {
+        "name": "Life Sciences Building",
+        "x": "57.5%",
+        "y": "65.8%"
+    },
+    "MCMST": {
+        "name": "Canadian Martyrs CES Testing/Exam Centre",
+        "x": "30.4%",
+        "y": "97.3%"
+    },
+    "MDCL": {
+        "name": "Michael Degroote Centre for Learning and Discovery",
+        "x": "66.4%",
+        "y": "66.0%"
+    },
+    "PGCLL": {
+        "name": "Peter George Centre for Living and Learning",
+        "x": "57.4%",
+        "y": "24.4%"
+    },
+    "PC": {
+        "name": "Psychology Building",
+        "x": "42.1%",
+        "y": "77.4%"
+    },
+    "T13": {
+        "name": "Preliminary Laboratory",
+        "x": "42.6%",
+        "y": "86.9%"
+    },
+    "T34": {
+        "name": "Temporary Lecture Theatre",
+        "x": "58.2%",
+        "y": "62.2%"
+    },
+    "TSH": {
+        "name": "Togo Salmon Hall",
+        "x": "61.0%",
+        "y": "36.2%"
+    },
+    "UH": {
+        "name": "University Hall",
+        "x": "48.0%",
+        "y": "43.6%"
+    }
+}
