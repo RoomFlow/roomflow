@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import SignInSide from './SignInSide';
-import TopNav from './TopNav';
 import ResultsPage from './ResultsPage';
 import {
   BrowserRouter as Router,

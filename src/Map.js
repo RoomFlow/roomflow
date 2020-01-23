@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Fab from '@material-ui/core/Fab';
 
 import mapImage from './map.png';
