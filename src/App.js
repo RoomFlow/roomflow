@@ -63,9 +63,7 @@ class App extends React.Component {
     })
   }
 
-  search(event) {
-    event.preventDefault();
-
+  search() {
     let data = { filter: {}};
     Object.assign(data.filter, this.state.filter);
 

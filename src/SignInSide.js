@@ -11,6 +11,7 @@ import SimpleSelect from './SimpleSelect'
 import SimplePopover from './SimplePopover'
 import RadioButtonsGroup from './OccupantsList'
 import RoomTypeRadio from './RoomTypeRadio'
+import { withRouter } from "react-router";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,8 +44,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignInSide(props) {
+function SignInSide(props) {
   const classes = useStyles();
+
+  const handleSearchClick = event => {
+    event.preventDefault();
+    props.search();
+    props.history.push('/results');
+  }
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -101,7 +109,7 @@ export default function SignInSide(props) {
               variant="contained"
               color="secondary"
               className={classes.submit}
-              onClick={props.search}
+              onClick={handleSearchClick}
             >
               Search
             </Button>
@@ -123,3 +131,5 @@ export default function SignInSide(props) {
     </Grid>
   );
 }
+
+export default withRouter(SignInSide);
