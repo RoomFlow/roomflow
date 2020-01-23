@@ -8,6 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import SimpleSelect from './SimpleSelect'
+import SimplePopover from './SimplePopover'
+import RadioButtonsGroup from './OccupantsList'
+import RoomTypeRadio from './RoomTypeRadio'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,30 +56,50 @@ export default function SignInSide(props) {
           </Typography>
           <form className={classes.form} noValidate>
             {/* <MultipleSelect onChange={props.updateFilter('building')} value={props.filterData.building}></MultipleSelect> */}
-            <SimpleSelect handleChange={props.updateFilter('building')} value={props.filterData.building}></SimpleSelect>
+            <SimpleSelect handleChange={props.updateFilter('building')} value={props.filterData.building}/>
             <FormControlLabel
-            value="end"
-            control={<Switch color="primary" />}
-            label="Currently Available"
-            labelPlacement="end"
+              value="end"
+              control={<Switch color="primary" />}
+              label="Currently Available"
+              labelPlacement="end"
+            />
+            {/* checked={props.filter.windows} 
+            checked={props.filter.wheelchair}*/}
+            <FormControlLabel
+              control={<Switch color="primary" onChange={props.toggleFilter('windows')} />}
+              label="Windows"
+              labelPlacement="end"
             />
             <FormControlLabel
-            value="end"
-            control={<Switch color="primary" />}
-            label="Windows"
-            labelPlacement="end"
+              control={<Switch color="primary" onChange={props.toggleFilter('wheelchair')} />}
+              label="Wheelchair Accessible"
+              labelPlacement="end"
             />
-            <FormControlLabel
-            value="end"
-            control={<Switch color="primary" />}
-            label="Wheelchair Accessible"
-            labelPlacement="end"
-            />
+            <Grid container direction="row" justify="center" alignItems="center" spacing={2}> 
+              <Grid item>
+                <SimplePopover title="Occupants">
+                  <RadioButtonsGroup 
+                  handleChange={props.updateCapacityComparison} 
+                  value={props.filterData.capacity.comparison}
+                  handleSizeChange={props.updateCapacitySize} 
+                  sizeValue={props.filterData.capacity.size}
+                  />
+                </SimplePopover>
+              </Grid>
+              <Grid item>
+                <SimplePopover title="Type of Room">
+                <RoomTypeRadio
+                handleChange={props.updateFilter('roomType')}
+                value={props.filterData.roomType}
+                />
+                </SimplePopover>
+              </Grid>
+            </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
+              color="secondary"
               className={classes.submit}
               onClick={props.search}
             >

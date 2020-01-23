@@ -26,13 +26,13 @@ export default function CheckboxLabels() {
       />
       <FormControlLabel
         control={
-          <Checkbox checked={state.checkedB} onChange={handleChange('checkedB')} value="checkedB" />
+          <Checkbox checked={state.checkedB} onChange={handleChange('checkedA')} value="checkedB" />
         }
         label="Group Study"
       />
       <FormControlLabel
         control={
-          <Checkbox checked={state.checkedC} onChange={handleChange('checkedC')} value="checkedC" />
+          <Checkbox checked={state.checkedC} onChange={handleChange('checkedA')} value="checkedC" />
         }
         label="Interview"
       />

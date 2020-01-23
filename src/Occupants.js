@@ -25,13 +25,13 @@ export default function DiscreteSlider() {
         Number of Occupants
       </Typography>
       <Slider
-        defaultValue={30}
+        defaultValue={0}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider"
         valueLabelDisplay="auto"
         step={1}
         marks
-        min={1}
+        min={0}
         max={10}
       />
     </div>

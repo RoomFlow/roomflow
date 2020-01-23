@@ -20,18 +20,20 @@ export default function SimpleSelect(props) {
 
   return (
     <div>
-        <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-helper-label">Buildings</InputLabel>
-            <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            value={props.value}
-            onChange={props.handleChange}
-            >
-            <MenuItem value={"JHE"}>JHE</MenuItem>
-            <MenuItem value={"T13"}>T13</MenuItem>
-            </Select>
-      </FormControl>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-helper-label">Buildings</InputLabel>
+        <Select
+        labelId="demo-simple-select-helper-label"
+        id="demo-simple-select-helper"
+        value={props.value}
+        onChange={props.handleChange}>
+          <MenuItem value={"JHE"}>JHE</MenuItem>
+          <MenuItem value={"T13"}>T13</MenuItem>
+          <MenuItem value={"ABB"}>ABB</MenuItem>
+          <MenuItem value={"BSB"}>BSB</MenuItem>
+          <MenuItem value={"CNH"}>CNH</MenuItem>
+        </Select>
+      </FormControl>  
     </div>
   );
 }
