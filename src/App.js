@@ -18,15 +18,12 @@ class App extends React.Component {
       filter: {
         "capacity": {
           "size": 0,
-          "comparison": "GREATER_THAN"
+          "comparison": "GREATER_THAN_EQUAL_TO"
         },
         "building": ""
       }
     }
   }
-
-  // componentDidMount() {
-  // }
 
   updateFilter(field) {
     return event => {
@@ -34,6 +31,36 @@ class App extends React.Component {
         filter: {...this.state.filter, [field]: event.target.value}
       })
     }
+  }
+
+  toggleFilter(field) {
+    return event => {
+      this.setState({
+        filter: {...this.state.filter, [field]: !this.state.filter[field]}
+      })
+    }
+  }
+
+  updateCapacitySize(event) {
+    this.setState({
+      filter: {
+        ...this.state.filter, capacity: {
+          size: event.target.value, 
+          comparison: this.state.filter.capacity.comparison
+        }
+      } 
+    })
+  }
+
+  updateCapacityComparison(event) {
+    this.setState({
+      filter: {
+        ...this.state.filter, capacity: {
+          comparison: event.target.value, 
+          size: this.state.filter.capacity.size
+        }
+      } 
+    })
   }
 
   search(event) {
@@ -93,6 +120,9 @@ class App extends React.Component {
                 updateFilter={this.updateFilter.bind(this)} 
                 filterData={this.state.filter}
                 search={this.search.bind(this)}
+                toggleFilter={this.toggleFilter.bind(this)}
+                updateCapacitySize={this.updateCapacitySize.bind(this)}
+                updateCapacityComparison={this.updateCapacityComparison.bind(this)}
               />
             </Route>
           </Switch>
