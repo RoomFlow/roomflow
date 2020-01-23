@@ -33,6 +33,7 @@ function RoomsTable(props) {
                 <TableCell align="right">Room Type</TableCell>
                 <TableCell align="right">Occupied</TableCell>
                 <TableCell align="right">Light Level</TableCell>
+                <TableCell align="right">Sound Level</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -50,6 +51,9 @@ function RoomsTable(props) {
                     </TableCell>
                     <TableCell align="right">
                       {room.Light}
+                    </TableCell>
+                    <TableCell align="right">
+                      {room.Sound}
                     </TableCell>
                 </TableRow>
             ))}
