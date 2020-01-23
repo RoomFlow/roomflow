@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Fab from '@material-ui/core/Fab';
 
 import mapImage from './map.png';
@@ -8,17 +7,18 @@ import buildingData from './buildings.json';
 
 class Map extends React.Component {
     render() {
-        let { rooms } = this.props;
+        let { results, handleSelect } = this.props;
     
         return (
-            <div style={{display: 'inline-block', position: 'relative', height: '100%'}} >
-                <img src={mapImage} alt="map" style={{width: 'auto', height: '100%'}} />
-                {rooms && rooms.map(building => (
+            <div style={{position: 'relative'}}>
+                <img src={mapImage} alt="map" style={{width: 'auto', height: 'calc(100vh - 130px)', objectFit: 'contain'}} />
+                {results && results.map(building => (
                     <Fab
                         key={building.buildingName}
                         color="secondary"
                         size="small"
                         variant="extended"
+                        onClick={handleSelect(building.buildingName)}
                         style={{
                             position: 'absolute', 
                             left: buildingData[building.buildingName].x,

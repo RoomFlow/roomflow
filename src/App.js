@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 import SignInSide from './SignInSide';
-import TopNav from './TopNav'
-import SpacingGrid from './SearchResults'
+import ResultsPage from './ResultsPage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults: null,
+      searchResults: [],
       filter: {
         "capacity": {
           "size": 0,
@@ -63,9 +62,7 @@ class App extends React.Component {
     })
   }
 
-  search(event) {
-    event.preventDefault();
-
+  search() {
     let data = { filter: {}};
     Object.assign(data.filter, this.state.filter);
 
@@ -111,9 +108,8 @@ class App extends React.Component {
       <Router> 
         <div className="App">
           <Switch>
-            <Route path="/loggedIn">
-              <TopNav></TopNav>
-              <SpacingGrid></SpacingGrid>
+            <Route path="/results">
+              <ResultsPage results={this.state.searchResults} />
             </Route>
             <Route path="/">
               <SignInSide 
