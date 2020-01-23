@@ -7,6 +7,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import CheckIcon from '@material-ui/icons/Check';
+import moment from 'moment';
 
 const useStyles = makeStyles({
   root: {
@@ -29,6 +31,8 @@ function RoomsTable(props) {
                 <TableCell>Room Number</TableCell>
                 <TableCell align="right">Capacity</TableCell>
                 <TableCell align="right">Room Type</TableCell>
+                <TableCell align="right">Occupied</TableCell>
+                <TableCell align="right">Light Level</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -39,6 +43,14 @@ function RoomsTable(props) {
                     </TableCell>
                     <TableCell align="right">{room.Capacity}</TableCell>
                     <TableCell align="right">{room.RoomType}</TableCell>
+                    <TableCell align="right">
+                      {room.Timestamp && moment(room.Timestamp).add(5, 'm').isAfter(moment()) && (
+                        <CheckIcon style={{color: 'green'}} />
+                      )}
+                    </TableCell>
+                    <TableCell align="right">
+                      {room.Light}
+                    </TableCell>
                 </TableRow>
             ))}
           </TableBody>
